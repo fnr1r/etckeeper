@@ -38,8 +38,8 @@ set -euo pipefail
 # and parsing it would be slightly more complex.
 if git rev-parse --git-dir | grep -q /.git/worktrees
 then
-	# Inside worktree, do nothing.
-	exit
+    # Inside worktree, do nothing.
+    exit
 fi
 
 cd $(printf "%q" "$MANAGED_DIR")
