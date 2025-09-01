@@ -5,15 +5,23 @@
 ## This file is sourced from dirs.sh
 # shellcheck disable=SC2034
 
-## Default settings.
+## Default settings
 ## These should stay the same on all distros
 
+# Which directory should be tracked
+MANAGED_DIR="/etc"
 # Which VCS should be used
 VCS="git"
 # Options that should be passed to commit
 COMMIT_OPTIONS=""
 # Which remotes should be pushed on commit
 PUSH_REMOTE=()
+
+## Debug settings
+
+# NOTE: This is just to make sure rm -rf doesn't get run during testing
+# Remove this in prod.
+ETCKEEPER_DIFUSE_UNINIT="yes"
 
 ## Distro-specific settings
 

@@ -13,18 +13,20 @@ fi
 main() {
     argparse "$@"
 
-    local command="${POSITIONAL_ARGS[0]}"
+    local command="${POSITIONAL_ARGS[0]:-}"
 
-    if [ "$command" == "help" ]; then
+    if [ -z "$command" ] || [ "$command" == "help" ]; then
         usage
         exit 0
     fi
 
     cmd_scripts_init "$command"
 
+    cd "$MANAGED_DIR"
+
     # setup tracebacks
-    trap _exit_trap EXIT
-    trap _err_trap ERR
+    #trap _exit_trap EXIT
+    #trap _err_trap ERR
 
     for script in "${CMD_SCRIPTS[@]}"; do
         # shellcheck disable=SC1090

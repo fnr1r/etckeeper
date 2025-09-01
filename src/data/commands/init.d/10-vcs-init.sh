@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 VCS_DIR="$(vcs_get_dir)"
 
 if [ -d "$VCS_DIR" ]; then

@@ -42,7 +42,7 @@ then
 	exit
 fi
 
-cd $(printf "%q" "$PWD")
+cd $(printf "%q" "$MANAGED_DIR")
 EOF
     cat >> "$hook_file"
 
