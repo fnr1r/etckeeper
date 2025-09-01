@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+comment "some other files in /etc that typically do not need to be tracked"
+ignore /ld.so.cache
+ignore /mtab
+ignore /mtab.fuselock
+ignore /.pwd.lock
+ignore nologin
+ignore prelink.cache
+ignore "*.LOCK"
+ignore network/run
+ignore adjtime
+ignore /udev/hwdb.bin
+ignore lvm/cache
+ignore lvm/archive
+ignore "/X11/xdm/authdir/authfiles/*"
+ignore ntp.conf.dhcp
+ignore .initctl
+ignore "webmin/fsdump/*.status"
+ignore "webmin/webmin/oscache"
+ignore "apparmor.d/cache/*"
+ignore "service/*/supervise/*"
+ignore "service/*/log/supervise/*"
+ignore "sv/*/supervise/*"
+ignore "sv/*/log/supervise/*"
+ignore "*.elc"
+ignore "*.pyc"
+ignore "*.pyo"
+ignore "init.d/.depend.*"
+ignore "openvpn/openvpn-status.log"
+ignore "cups/subscriptions.conf"
+ignore "cups/subscriptions.conf.O"
+ignore "cups/printers.conf"
+ignore "cups/printers.conf.O"
+ignore "fake-hwclock.data"
+ignore "check_mk/logwatch.state"
+newline

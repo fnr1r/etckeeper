@@ -2,6 +2,7 @@
 __vcs_dir="$ETCKEEPER_DATA_DIR/core/vcs"
 
 . "$__vcs_dir/get_dir.sh"
+. "$__vcs_dir/ignore.sh"
 . "$__vcs_dir/init.sh"
 
 . "$__vcs_dir/git_hook.sh"
