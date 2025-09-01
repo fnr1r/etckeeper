@@ -8,7 +8,7 @@ if [ -z "${ETCKEEPER_DATA_DIR:-}" ]; then
     readonly ETCKEEPER_DATA_DIR="$HERE"
 fi
 
-. "$ETCKEEPER_DATA_DIR/init.sh"
+. "$ETCKEEPER_DATA_DIR/core/mod.sh"
 
 main() {
     argparse "$@"
