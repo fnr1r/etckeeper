@@ -32,9 +32,12 @@ cmd_scripts_collect() {
     CMD_SCRIPTS=()
     CMD_SCRIPT_NAMES=()
 
-    for file in "$ETCKEEPER_CONFIG_DIR/$subdir"/*; do
-        _cmd_script_add "$file" "$(basename "$file")"
-    done
+    local user_scripts_dir="$ETCKEEPER_CONFIG_DIR/$subdir"
+    if [ -d "$user_scripts_dir" ]; then
+        for file in "$ETCKEEPER_CONFIG_DIR/$subdir"/*; do
+            _cmd_script_add "$file" "$(basename "$file")"
+        done
+    fi
     for file in "$ETCKEEPER_DATA_DIR/$subdir"/*; do
         cmd_script_add "$file"
     done
