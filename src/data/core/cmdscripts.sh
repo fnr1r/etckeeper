@@ -24,6 +24,16 @@ cmd_script_add() {
     _cmd_script_add "$@" "$filename"
 }
 
+cmd_script_add_dir() {
+    local scripts_dir="$1"
+    if ! [ -d "$scripts_dir" ]; then
+        return
+    fi
+    for file in "$scripts_dir"/*.sh; do
+        cmd_script_add "$file"
+    done
+}
+
 cmd_scripts_collect() {
     local command="$1"
 
@@ -32,15 +42,8 @@ cmd_scripts_collect() {
     CMD_SCRIPTS=()
     CMD_SCRIPT_NAMES=()
 
-    local user_scripts_dir="$ETCKEEPER_CONFIG_DIR/$subdir"
-    if [ -d "$user_scripts_dir" ]; then
-        for file in "$ETCKEEPER_CONFIG_DIR/$subdir"/*; do
-            _cmd_script_add "$file" "$(basename "$file")"
-        done
-    fi
-    for file in "$ETCKEEPER_DATA_DIR/$subdir"/*; do
-        cmd_script_add "$file"
-    done
+    cmd_script_add_dir "$ETCKEEPER_CONFIG_DIR/$subdir"
+    cmd_script_add_dir "$ETCKEEPER_DATA_DIR/$subdir"
 }
 
 cmd_scripts_sorted_add() {

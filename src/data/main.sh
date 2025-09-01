@@ -22,6 +22,10 @@ main() {
 
     cmd_scripts_init "$command"
 
+    if [ "${#CMD_SCRIPTS[@]}" -lt 1 ]; then
+        err "etckeeper: command $command not found"
+    fi
+
     cd "$MANAGED_DIR"
 
     # setup tracebacks
