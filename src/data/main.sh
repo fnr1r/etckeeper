@@ -13,10 +13,6 @@ fi
 main() {
     argparse "$@"
 
-    # setup tracebacks
-    trap _exit_trap EXIT
-    trap _err_trap ERR
-
     local command="${POSITIONAL_ARGS[0]}"
 
     if [ "$command" == "help" ]; then
@@ -24,7 +20,16 @@ main() {
         exit 0
     fi
 
-    err "TODO"
+    cmd_scripts_init "$command"
+
+    # setup tracebacks
+    trap _exit_trap EXIT
+    trap _err_trap ERR
+
+    for script in "${CMD_SCRIPTS[@]}"; do
+        # shellcheck disable=SC1090
+        . "$script"
+    done
 }
 
 _entry() {

@@ -10,6 +10,11 @@ err() {
     exit 1
 }
 
+# echo with NULL between args
+zecho() {
+    printf "%s\0" "$@"
+}
+
 _err_traceback() {
     eecho "Traceback:"
     eecho "  Depth: ${BASH_SOURCE[*]}"

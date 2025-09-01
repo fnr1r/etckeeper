@@ -13,6 +13,8 @@ fi
 
 . "$ETCKEEPER_DATA_DIR/argparse.sh"
 
+. "$ETCKEEPER_DATA_DIR/cmdscripts.sh"
+
 if ! (return 2> /dev/null); then
     echo "ERROR: $0 is not a runnable bash script!" 1>&2
     exit 1
