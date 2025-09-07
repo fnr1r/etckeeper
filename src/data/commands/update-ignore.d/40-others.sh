@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 comment "some other files in /etc that typically do not need to be tracked"
-ignore /ld.so.cache
-ignore /mtab
-ignore /mtab.fuselock
-ignore /.pwd.lock
 ignore nologin
+ignore ld.so.cache
 ignore prelink.cache
+ignore mtab
+ignore mtab.fuselock
+ignore .pwd.lock
 ignore "*.LOCK"
 ignore network/run
 ignore adjtime
-ignore /udev/hwdb.bin
+ignore udev/hwdb.bin
 ignore lvm/cache
 ignore lvm/archive
-ignore "/X11/xdm/authdir/authfiles/*"
+ignore "X11/xdm/authdir/authfiles/*"
 ignore ntp.conf.dhcp
 ignore .initctl
 ignore "webmin/fsdump/*.status"
