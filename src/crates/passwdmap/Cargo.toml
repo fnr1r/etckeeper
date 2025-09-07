@@ -1,0 +1,9 @@
+[package]
+name = "passwdmap"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+easy-ext.workspace = true
+intmap = "3"
+static-rc = "0.7"

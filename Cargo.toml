@@ -1,11 +1,16 @@
 [workspace]
 resolver = "3"
-members = ["src/crates/etckeeper-rs"]
+members = [
+    "src/crates/etckeeper-rs",
+    "src/crates/passwdmap",
+]
 
 [workspace.dependencies]
 camino = "1"
 derive_more = "2"
+easy-ext = "1"
 phf = { version = "0.13", features = ["macros"] }
 rustix = { version = "1", features = ["fs"] }
 
+passwdmap.path = "src/crates/passwdmap"
 pathutils.path = "src/crates/pathutils"
