@@ -1,0 +1,8 @@
+[package]
+name = "pathutils"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+camino.workspace = true
+path-clean = "1"

@@ -5,3 +5,7 @@ members = ["src/crates/etckeeper-rs"]
 [workspace.dependencies]
 camino = "1"
 derive_more = "2"
+phf = { version = "0.13", features = ["macros"] }
+rustix = { version = "1", features = ["fs"] }
+
+pathutils.path = "src/crates/pathutils"
