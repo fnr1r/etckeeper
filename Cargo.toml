@@ -1,3 +1,7 @@
 [workspace]
 resolver = "3"
 members = ["src/crates/etckeeper-rs"]
+
+[workspace.dependencies]
+camino = "1"
+derive_more = "2"

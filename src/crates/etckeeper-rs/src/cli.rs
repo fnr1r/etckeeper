@@ -1,4 +1,5 @@
 use anyhow::Result;
+use camino::Utf8Path;
 use clap::{Args, CommandFactory, Parser, Subcommand, ValueHint};
 use clap_complete::{Shell, generate};
 use std::{
@@ -7,6 +8,8 @@ use std::{
     io::{Write, stdout},
     path::PathBuf,
 };
+
+use crate::metadata::shared_info::Vcs;
 
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
@@ -34,6 +37,10 @@ pub enum Command {
 pub struct MetadataArgs {
     #[clap(subcommand)]
     pub command: MetadataCommand,
+    #[clap(long)]
+    pub repo_dir: Option<Box<Utf8Path>>,
+    #[clap(long)]
+    pub vcs: Option<Vcs>,
 }
 
 #[derive(Debug, Subcommand)]

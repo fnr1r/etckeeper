@@ -5,5 +5,11 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1"
+camino.workspace = true
 clap = { version = "4.5", features = ["derive"] }
 clap_complete = "4.5"
+strum = { version = "0.27", features = ["derive"] }
+
+[dependencies.derive_more]
+workspace = true
+features = ["as_ref"]
