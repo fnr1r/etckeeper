@@ -8,9 +8,18 @@ _core_dir="$ETCKEEPER_DATA_DIR/core"
 # shellcheck source=../config.sh
 . "$ETCKEEPER_DISTRO_CONFIG_FILE"
 
+export -n ETCKEEPER_DISTRO_CONFIG_FILE
+
 if [ -f "$ETCKEEPER_CONFIG_FILE" ]; then
     # shellcheck source=../config.sh
     . "$ETCKEEPER_CONFIG_FILE"
+fi
+
+export -n ETCKEEPER_CONFIG_FILE
+
+if [ -n "${ETCKEEPER_LIBEXEC_DIR:-}" ]; then
+    export PATH="$ETCKEEPER_LIBEXEC_DIR:$PATH"
+    export -n ETCKEEPER_LIBEXEC_DIR
 fi
 
 . "$_core_dir/argparse.sh"
