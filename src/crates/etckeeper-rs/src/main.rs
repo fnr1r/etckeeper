@@ -1,6 +1,7 @@
 use anyhow::Result;
 
 mod cli;
+mod metadata;
 
 fn main() -> Result<()> {
     let args = cli::cli();
@@ -12,6 +13,7 @@ fn main() -> Result<()> {
     use cli::Command as E;
     match subcommand {
         E::Complete { shell, file } => cli::generate_completions(shell, file)?,
+        E::Metadata(args) => metadata::cmd_metadata(args)?,
     }
     Ok(())
 }

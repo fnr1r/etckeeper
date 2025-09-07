@@ -1,5 +1,5 @@
 use anyhow::Result;
-use clap::{CommandFactory, Parser, Subcommand, ValueHint};
+use clap::{Args, CommandFactory, Parser, Subcommand, ValueHint};
 use clap_complete::{Shell, generate};
 use std::{
     boxed::Box,
@@ -26,6 +26,22 @@ pub enum Command {
         /// The path to write the completions to
         file: Option<PathBuf>,
     },
+    /// Manage etckeeper repo metadata
+    Metadata(MetadataArgs),
+}
+
+#[derive(Debug, Args)]
+pub struct MetadataArgs {
+    #[clap(subcommand)]
+    pub command: MetadataCommand,
+}
+
+#[derive(Debug, Subcommand)]
+pub enum MetadataCommand {
+    /// Apply saved metadata to files
+    Apply,
+    /// Save file metadata
+    Save,
 }
 
 pub fn cli() -> Cli {
