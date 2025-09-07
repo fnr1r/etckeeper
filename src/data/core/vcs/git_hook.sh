@@ -46,5 +46,5 @@ cd $(printf "%q" "$MANAGED_DIR")
 EOF
     cat >> "$hook_file"
 
-    chmod +x .git/hooks/pre-commit
+    chmod +x "$hook_file"
 }

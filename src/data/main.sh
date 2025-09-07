@@ -2,7 +2,9 @@
 set -euo pipefail
 
 HERE="$(dirname "$(readlink -f -- "$0")")"
-ME="$(basename "$0")"
+EXEC_ORG="$0"
+# shellcheck disable=SC2034
+ME="$(basename "$EXEC_ORG")"
 
 if [ -z "${ETCKEEPER_DATA_DIR:-}" ]; then
     readonly ETCKEEPER_DATA_DIR="$HERE"

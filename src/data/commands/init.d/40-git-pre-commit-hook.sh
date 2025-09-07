@@ -3,13 +3,12 @@ if [ "$VCS" != "git" ]; then
     return
 fi
 
-hook_file=".git/hooks/pre-commit"
+hook_action="pre-commit"
+hook_file=".git/hooks/${hook_action}"
+hook_cmd="$(printf '%q' "$EXEC_ORG") ${hook_action}"
+hook_desc="store metadata and do sanity checks"
 
-hook_cmd="etckeeper pre-commit"
-
-if ! [ -x "$hook_file" ]; then
-    :
-elif ! grep -q "$hook_cmd" "$hook_file"; then
+if [ -e "$hook_file" ] && ! grep -q "$hook_cmd" "$hook_file"; then
     eecho "etckeeper warning:" "$hook_file" \
         "needs to be manually modified to run:" \
         "$hook_cmd"
@@ -17,5 +16,4 @@ elif ! grep -q "$hook_cmd" "$hook_file"; then
 fi
 
 echo "$hook_cmd" | \
-    git_write_hook pre-commit \
-    "store metadata and do sanity checks"
+    git_write_hook "$hook_action" "$hook_desc"
