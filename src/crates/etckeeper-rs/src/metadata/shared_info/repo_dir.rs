@@ -7,6 +7,8 @@ use std::{
 use camino::{Utf8Path, Utf8PathBuf};
 use derive_more::AsRef;
 
+use super::vcs::Vcs;
+
 const ETCKEEPER_METADATA_PATH: &str = ".etckeeper";
 
 #[derive(Debug, AsRef)]
@@ -24,6 +26,10 @@ impl RepoDir {
     }
     pub fn metadata_write(&self) -> Result<impl Write> {
         Ok(BufWriter::new(File::create(self.metadata_path())?))
+    }
+    pub fn ignorefile_path(&self, vcs: &Vcs) -> Utf8PathBuf {
+        let txt = vcs.as_str().to_lowercase();
+        self.0.join(format!(".{}ignore", txt))
     }
 }
 

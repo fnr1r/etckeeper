@@ -1,9 +1,9 @@
 use camino::Utf8Path;
-use strum::EnumString;
+use strum::{EnumString, IntoStaticStr};
 
 use super::repo_dir::RepoDir;
 
-#[derive(Debug, Clone, PartialEq, Eq, EnumString)]
+#[derive(Debug, Clone, PartialEq, Eq, EnumString, IntoStaticStr)]
 pub enum Vcs {
     Git,
     Hg,
@@ -12,6 +12,9 @@ pub enum Vcs {
 }
 
 impl Vcs {
+    pub fn as_str(&self) -> &'static str {
+        self.into()
+    }
     fn detect_vcs_from_env() -> Option<Self> {
         let Ok(v) = std::env::var("VCS") else {
             return None;

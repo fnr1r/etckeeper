@@ -2,9 +2,7 @@ use std::io::Result;
 
 use crate::cli::MetadataArgs;
 
-use super::shared_info::SharedInfo;
-
-use super::index::index_repo;
+use super::{index::index_repo, shared_info::SharedInfo};
 
 fn metadata_apply(info: &SharedInfo) -> Result<()> {
     let mut input = info.root.metadata_read()?;
@@ -13,7 +11,7 @@ fn metadata_apply(info: &SharedInfo) -> Result<()> {
 }
 
 fn metadata_save(info: &SharedInfo) -> Result<()> {
-    let files = index_repo(info.root.as_ref())?;
+    let files = index_repo(info.root.as_ref(), info)?;
     let mut out = info.root.metadata_write()?;
     // TODO
     Ok(())

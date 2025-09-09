@@ -10,6 +10,8 @@ mod xattrs;
 pub use file::RepoFile;
 pub use xattrs::FileXattrs;
 
+use super::shared_info::SharedInfo;
+
 const REPO_ROOT_IGNORE: phf::Set<&'static str> = phf::phf_set!(".git", ".hg", ".bzr", "_darcs",);
 
 fn read_dir_sort(this: impl AsRef<Utf8Path>) -> IoResult<Vec<Utf8DirEntry>> {
@@ -68,11 +70,17 @@ pub fn index_repo_raw(root: &Utf8Path) -> IoResult<Vec<RepoFile>> {
     Ok(res)
 }
 
-pub fn index_repo(root: &Utf8Path) -> IoResult<Vec<RepoFile>> {
+pub fn index_repo(root: &Utf8Path, info: &SharedInfo) -> IoResult<Vec<RepoFile>> {
     let mut res = index_repo_raw(root)?;
     for file in &mut res {
         file.path = relpath_utf8(&file.path, root);
     }
+    // TODO: Move this into index_repo_raw
+    res.retain(|e| {
+        info.ignore
+            .matched(&e.path, e.file_type() == FileType::Directory)
+            .is_none()
+    });
     res.sort_by(|a, b| a.path.as_str().cmp(b.path.as_str()));
     Ok(res)
 }
