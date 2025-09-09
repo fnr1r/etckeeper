@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+exclude_internal() {
+    grep -E -v '(^|/)(\.git|\.hg|\.bzr|_darcs)/'
+}
+
+if [ "$VCS" = "git" ]; then
+    special="$(find . ! -type d ! -type f ! -type l -exec git ls-files --exclude-standard --cached --others {} + | exclude_internal)" || true
+    hardlinks="$(find . -type f ! -links 1 -exec git ls-files --exclude-standard --cached --others {} + | exclude_internal)" || true
+elif [ "$VCS" = "hg" ]; then
+    special="$(find . ! -type d ! -type f ! -type l | exclude_internal)" || true
+    hardlinks="$(find . -type f ! -links 1 -exec hg status {} \; | exclude_internal )" || true
+elif [ "$VCS" = "bzr" ] || [ "$VCS" = "darcs" ]; then
+    special="$(find . ! -type d ! -type f ! -type l | exclude_internal)" || true
+    hardlinks="$(find . -type f ! -links 1 | exclude_internal )" || true
+else
+    special=""
+    hardlinks=""
+fi
+
+if [ -n "$special" ] && [ -z "${AVOID_SPECIAL_FILE_WARNING:-}" ]; then
+    echo "etckeeper warning: special files could cause problems with $VCS:" >&2
+    echo "$special" >&2
+fi
+if [ -n "$hardlinks" ] && [ -z "${AVOID_SPECIAL_FILE_WARNING:-}" ]; then
+    echo "etckeeper warning: hardlinked files could cause problems with $VCS:" >&2
+    echo "$hardlinks" >&2
+fi
