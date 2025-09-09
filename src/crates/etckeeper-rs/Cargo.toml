@@ -19,4 +19,4 @@ xattr = "1.5"
 
 [dependencies.derive_more]
 workspace = true
-features = ["as_ref"]
+features = ["as_ref", "deref", "deref_mut"]

@@ -1,4 +1,4 @@
-use std::io::Result;
+use std::io::{Result, Write};
 
 use crate::cli::MetadataArgs;
 
@@ -17,7 +17,8 @@ fn metadata_apply(info: &SharedInfo) -> Result<()> {
 fn metadata_save(info: &SharedInfo) -> Result<()> {
     let files = index_repo(info.root.as_ref(), info)?;
     let mut out = info.root.metadata_write()?;
-    meta_save(&mut out, info, &files)?;
+    meta_save(&mut *out, info, &files)?;
+    out.flush()?;
     Ok(())
 }
 

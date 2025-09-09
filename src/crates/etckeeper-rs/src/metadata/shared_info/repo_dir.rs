@@ -1,13 +1,17 @@
 use std::{
     env::current_dir,
     fs::File,
-    io::{BufRead, BufReader, BufWriter, Result, Write},
+    io::{BufRead, BufReader, Result},
 };
 
 use camino::{Utf8Path, Utf8PathBuf};
 use derive_more::AsRef;
 
 use super::vcs::Vcs;
+
+mod metadata_file;
+
+use metadata_file::MetadataFileWriter;
 
 const ETCKEEPER_METADATA_PATH: &str = ".etckeeper";
 
@@ -24,8 +28,8 @@ impl RepoDir {
     pub fn metadata_read(&self) -> Result<impl BufRead> {
         Ok(BufReader::new(File::open(self.metadata_path())?))
     }
-    pub fn metadata_write(&self) -> Result<impl Write> {
-        Ok(BufWriter::new(File::create(self.metadata_path())?))
+    pub fn metadata_write(&self) -> Result<MetadataFileWriter> {
+        MetadataFileWriter::open(self.metadata_path())
     }
     pub fn ignorefile_path(&self, vcs: &Vcs) -> Utf8PathBuf {
         let txt = vcs.as_str().to_lowercase();
