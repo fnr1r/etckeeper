@@ -3,6 +3,7 @@ resolver = "3"
 members = [
     "src/crates/etckeeper-rs",
     "src/crates/passwdmap",
+    "src/crates/pathutils",
 ]
 
 [workspace.dependencies]
