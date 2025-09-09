@@ -77,9 +77,9 @@ pub fn index_repo(root: &Utf8Path, info: &SharedInfo) -> IoResult<Vec<RepoFile>>
     }
     // TODO: Move this into index_repo_raw
     res.retain(|e| {
-        info.ignore
-            .matched(&e.path, e.file_type() == FileType::Directory)
-            .is_none()
+        !info.ignore
+            .matched_path_or_any_parents(&e.path, true)
+            .is_ignore()
     });
     res.sort_by(|a, b| a.path.as_str().cmp(b.path.as_str()));
     Ok(res)
