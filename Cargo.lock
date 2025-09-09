@@ -215,9 +215,11 @@ dependencies = [
  "clap_complete",
  "derive_more",
  "ignore",
+ "passwdmap",
  "pathutils",
  "phf",
  "rustix",
+ "shellquote",
  "strum",
  "xattr",
 ]
