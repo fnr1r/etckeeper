@@ -4,6 +4,7 @@ members = [
     "src/crates/etckeeper-rs",
     "src/crates/passwdmap",
     "src/crates/pathutils",
+    "src/crates/shellquote",
 ]
 
 [workspace.dependencies]
@@ -12,6 +13,8 @@ derive_more = "2"
 easy-ext = "1"
 phf = { version = "0.13", features = ["macros"] }
 rustix = { version = "1", features = ["fs"] }
+thiserror = "2"
 
 passwdmap.path = "src/crates/passwdmap"
 pathutils.path = "src/crates/pathutils"
+shellquote.path = "src/crates/shellquote"
