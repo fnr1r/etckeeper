@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+pm_list_installed() {
+    qlist -ICv
+}
+
+# shellcheck disable=SC2168
+local _llpm_dir
+_llpm_dir="$(uimport_dir)"
+
+. "$_llpm_dir/ignore/emerge.sh"
+
+if ! (return 2> /dev/null); then
+    echo "ERROR: $0 is not a runnable bash script!" 1>&2
+    exit 1
+fi

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pm_get_ignores
+pm_list_installed

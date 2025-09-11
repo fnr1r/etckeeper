@@ -27,6 +27,7 @@ fi
 . "$_core_dir/cmdscripts.sh"
 
 uimport_mod "$_core_dir/vcs"
+uimport_mod "$_core_dir/pm"
 
 unset _core_dir
 

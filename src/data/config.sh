@@ -16,6 +16,12 @@ VCS="git"
 COMMIT_OPTIONS=""
 # Which remotes should be pushed on commit
 PUSH_REMOTE=()
+# The high-level package manager that's being used.
+# (apt, pacman, pacman-g2, yum, dnf, zypper, apk, xbps, emerge, cave, etc)
+HIGHLEVEL_PACKAGE_MANAGER=apt
+# The low-level package manager that's being used.
+# (dpkg, rpm, pacman, pacmatic, pacman-g2, apk, xbps, cave, qlist, etc)
+LOWLEVEL_PACKAGE_MANAGER=dpkg
 
 ## Debug settings
 
