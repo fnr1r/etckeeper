@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 vcs_get_dir() {
     case "$VCS" in
         git|hg|bzr)

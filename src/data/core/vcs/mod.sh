@@ -3,9 +3,14 @@ __vcs_dir="$ETCKEEPER_DATA_DIR/core/vcs"
 
 . "$__vcs_dir/get_dir.sh"
 . "$__vcs_dir/ignore.sh"
-. "$__vcs_dir/init.sh"
 
-. "$__vcs_dir/git_hook.sh"
+uimport_mod "$ETCKEEPER_DATA_DIR/impls/vcs/$VCS"
+
+# TODO: support other VCSes
+if [ "$VCS" != "git" ]; then
+    err "error: any VCSes other than git are unsupported for now" \
+        "(selected: $VCS)"
+fi
 
 unset __vcs_dir
 

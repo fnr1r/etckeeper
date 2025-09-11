@@ -2,6 +2,7 @@
 __utils_dir="$ETCKEEPER_DATA_DIR/core/utils"
 
 . "$__utils_dir/echo.sh"
+. "$__utils_dir/importutils.sh"
 . "$__utils_dir/traceback.sh"
 
 unset __utils_dir

@@ -26,7 +26,9 @@ fi
 
 . "$_core_dir/cmdscripts.sh"
 
-. "$_core_dir/vcs/mod.sh"
+uimport_mod "$_core_dir/vcs"
+
+unset _core_dir
 
 if ! (return 2> /dev/null); then
     echo "ERROR: $0 is not a runnable bash script!" 1>&2
