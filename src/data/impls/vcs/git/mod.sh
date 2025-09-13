@@ -5,6 +5,10 @@ vcs_init() {
     echo "$description" > .git/description
 }
 
+vcs_add_all() {
+    git add --all
+}
+
 # shellcheck disable=SC2168
 local _git_dir
 _git_dir="$(uimport_dir)"

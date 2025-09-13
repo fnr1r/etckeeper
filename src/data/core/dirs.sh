@@ -11,6 +11,10 @@ if [ -z "${ETCKEEPER_CONFIG_DIR:-}" ]; then
     ETCKEEPER_CONFIG_DIR="$XDG_CONFIG_HOME/etckeeper"
 fi
 
+if [ -z "${ETCKEEPER_CACHE_DIR:-}" ]; then
+    ETCKEEPER_CACHE_DIR="/var/cache/etckeeper-fnrir"
+fi
+
 ETCKEEPER_DISTRO_CONFIG_FILE="$ETCKEEPER_DATA_DIR/config.sh"
 ETCKEEPER_CONFIG_FILE="$ETCKEEPER_CONFIG_DIR/config.sh"
 
