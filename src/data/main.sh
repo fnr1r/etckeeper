@@ -6,6 +6,10 @@ EXEC_ORG="$0"
 # shellcheck disable=SC2034
 ME="$(basename "$EXEC_ORG")"
 
+if [ -z "${ENTRYPOINT:-}" ]; then
+    ENTRYPOINT="$EXEC_ORG"
+fi
+
 if [ -z "${ETCKEEPER_DATA_DIR:-}" ]; then
     readonly ETCKEEPER_DATA_DIR="$HERE"
 fi

@@ -5,7 +5,7 @@ fi
 
 hook_action="pre-commit"
 hook_file=".git/hooks/${hook_action}"
-hook_cmd="$(printf '%q' "$EXEC_ORG") ${hook_action}"
+hook_cmd="$(printf '%q' "$ENTRYPOINT") ${hook_action}"
 hook_desc="store metadata and do sanity checks"
 
 if [ -e "$hook_file" ] && ! grep -q "$hook_cmd" "$hook_file"; then

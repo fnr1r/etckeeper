@@ -5,7 +5,7 @@ fi
 
 hook_action="post-checkout"
 hook_file=".git/hooks/${hook_action}"
-hook_cmd="$(printf '%q' "$EXEC_ORG") ${hook_action}"
+hook_cmd="$(printf '%q' "$ENTRYPOINT") ${hook_action}"
 hook_desc="apply saved metadata"
 
 if [ -e "$hook_file" ] && ! grep -q "$hook_cmd" "$hook_file"; then
