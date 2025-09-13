@@ -12,6 +12,7 @@ argparse() {
     while [ $# -gt 0 ]; do
     case "$1" in
         --)
+            shift
             break
             ;;
         -h|--help)
