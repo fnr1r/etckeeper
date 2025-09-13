@@ -20,7 +20,6 @@ newline() {
     echo >> "$TMP_IGNORE_FILE"
 }
 
-cat /dev/null > "$TMP_IGNORE_FILE"
+uimport_mod "$ETCKEEPER_DATA_DIR/misc/ignore"
 
-# shellcheck disable=SC2034
-managed_by_etckeeper="managed by etckeeper"
+cat /dev/null > "$TMP_IGNORE_FILE"
