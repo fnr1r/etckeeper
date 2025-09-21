@@ -8,6 +8,7 @@ anyhow = "1"
 camino.workspace = true
 clap = { version = "4.5", features = ["derive"] }
 clap_complete = "4.5"
+easy-ext.workspace = true
 ignore = "0.4"
 passwdmap.workspace = true
 pathutils.workspace = true
@@ -15,6 +16,7 @@ phf.workspace = true
 rustix.workspace = true
 shellquote.workspace = true
 strum = { version = "0.27", features = ["derive"] }
+thiserror.workspace = true
 xattr = "1.5"
 
 [dependencies.derive_more]

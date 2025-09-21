@@ -214,6 +214,7 @@ dependencies = [
  "clap",
  "clap_complete",
  "derive_more",
+ "easy-ext",
  "ignore",
  "passwdmap",
  "pathutils",
@@ -221,6 +222,7 @@ dependencies = [
  "rustix",
  "shellquote",
  "strum",
+ "thiserror",
  "xattr",
 ]
 

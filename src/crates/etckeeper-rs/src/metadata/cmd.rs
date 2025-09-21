@@ -1,4 +1,5 @@
-use std::io::{Result, Write};
+use anyhow::Result;
+use std::io::Write;
 
 use crate::cli::MetadataArgs;
 
