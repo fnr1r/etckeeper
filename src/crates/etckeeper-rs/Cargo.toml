@@ -17,7 +17,7 @@ rustix.workspace = true
 shellquote.workspace = true
 strum = { version = "0.27", features = ["derive"] }
 thiserror.workspace = true
-xattr = "1.5"
+xattr = "1.6"
 
 [dependencies.derive_more]
 workspace = true
